@@ -5,56 +5,23 @@
     <title>Uestibulum Greeter</title>
 
     <link rel=stylesheet href=css/font-awesome.min.css >
-    <style type="text/css">
-      * { margin: 0; padding: 0; }
-      #bg {
-        position: fixed;
-        width: 100%;
-        display: block;
-        bottom: 0;
-        right: 0;
-        z-index: -1;
-      }
-
-      #power-panel {
-        position: absolute;
-        bottom: 2em;
-        right: 2em;
-
-        cursor: pointer;
-      }
-
-      #power-options {
-        background: rgba(0,0,0, 0.3);
-        opacity: 0;
-        transition: 1s;
-      }
-
-      #power-options.visible { opacity: 1; }
-
-      #power-options ul {
-        list-style: none;
-      }
-    </style>
-
-    <script type="application/javascript">
-      funciton showPowerOptions() {
-        
-      }
-    </script>
+    <link rel=stylesheet href=css/lightdm-uestibulum.css >
 
   </head>
   <body>
-    <img id=bg src="bg.jpg">
-    <div id=power-panel>
+    <img id=bg src="img/background.jpg">
+
+    <div id=power-panel onmouseout='hidePowerOptions(event)'>
       <div id=power-button onclick='showPowerOptions()'><i class="fa fa-power-off fa-3x"></i></div>
-      <div id=power-options>
+      <div id=power-options class=visible>
         <ul>
-          <li><i class='fa fa-3x fa-moon-o'></i> Suspend</li>
-          <li><i class='fa fa-3x fa-refresh'></i> Restart</li>
-          <li><i class='fa fa-3x fa-power-off'></i> Shutdown</li>
+          <li><i class='fa fa-moon-o'></i> Suspend</li>
+          <li><i class='fa fa-refresh'></i> Restart</li>
+          <li><i class='fa fa-power-off'></i> Shutdown</li>
         </ul>
       </div>
     </div>
+
+    <script type=application/javascript src=js/lightdm-uestibulum.js ></script>
   </body>
 </html>
