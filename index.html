@@ -9,19 +9,57 @@
 
   </head>
   <body>
-    <img id=bg src="img/background.jpg">
+    <img id=bg-morning class=bg src="img/morning.jpg">
+    <img id=bg-afternoon class=bg src="img/afternoon.jpg">
+    <img id=bg-evening class=bg src="img/evening.jpg">
+    <img id=bg-night class=bg src="img/night.gif">
 
-    <div id=power-panel onmouseout='hidePowerOptions(event)'>
-      <div id=power-button onclick='showPowerOptions()'><i class="fa fa-power-off fa-3x"></i></div>
-      <div id=power-options class=visible>
-        <ul>
-          <li><i class='fa fa-moon-o'></i> Suspend</li>
-          <li><i class='fa fa-refresh'></i> Restart</li>
-          <li><i class='fa fa-power-off'></i> Shutdown</li>
-        </ul>
+    <div id=ui-container>
+      <div id=power-panel>
+        <div id=power-button><i class="fa fa-power-off fa-3x"></i></div>
+        <div id=power-options class=visible>
+          <ul>
+            <li id=suspend><i class='fa fa-moon-o'></i> Suspend</li>
+            <li id=restart><i class='fa fa-refresh'></i> Restart</li>
+            <li id=shutdown><i class='fa fa-power-off'></i> Shutdown</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id=login-panel>
+        <h1>
+          <span id=greeting>Good day</span>,
+          <div id=users>
+            <span id=user-display>User</span>
+            <ul id=users-list></ul>
+            <i class='fa fa-user-circle'></i>
+          </div>
+        </h1>
+        <input type=password name=pwd placeholder='password...'>
+        <i class='fa fa-exclamation-circle' id=fail-msg></i>
+      </div>
+
+      <div id=session-panel>
+        <h2>
+          session: 
+          <div id=sessions>
+            <span id=session-display>default</span>
+            <ul id=sessions-list></ul>
+          </div>
+        </h2>
+      </div>
+
+      <div id=clock-panel>
+        <span class=hours></span><!--
+     --><span class=throb>:</span><!--
+     --><span class=minutes></span>
       </div>
     </div>
 
+    <script type=application/javascript src=js/jquery-3.1.1.slim.min.js ></script>
+    <script type=application/javascript src=js/underscore-min.js ></script>
+    <script type=application/javascript src=js/backbone-min.js ></script>
+    <script type=application/javascript src=js/lightdm-mock.js ></script>
     <script type=application/javascript src=js/lightdm-uestibulum.js ></script>
   </body>
 </html>

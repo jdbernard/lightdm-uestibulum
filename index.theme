@@ -1,0 +1,5 @@
+[theme]
+name=Uestibulum
+description=Uestibulum Greeter Theme
+engine=lightdm-webkit-greeter
+url=index.html
