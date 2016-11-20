@@ -26,9 +26,9 @@
     events: {
       'click #power-button':      'showPowerOptions',
       'mouseout #power-options':  'hidePowerOptions',
-      'click suspend':            'suspend',
-      'click restart':            'restart',
-      'click shutdown':           'shutdown'
+      'click #suspend':            'suspend',
+      'click #restart':            'restart',
+      'click #shutdown':           'shutdown'
     },
     
     initialize: function(options) {

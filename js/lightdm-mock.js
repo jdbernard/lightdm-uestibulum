@@ -28,13 +28,23 @@ if (!('lightdm' in window)) {
     lightdm.layout = lightdm.layouts[0];
     lightdm.sessions = [
         {
-            key: "key1",
-            name: "session 1",
+            key: "fluxbox",
+            name: "Fluxbox",
             comment: "no comment"
         },
         {
-            key: "key2",
-            name: "session 2",
+            key: "lubuntu",
+            name: "Lubuntu",
+            comment: "no comment"
+        },
+        {
+            key: "openbox",
+            name: "Openbox",
+            comment: "no comment"
+        },
+        {
+            key: "weston",
+            name: "Weston",
             comment: "no comment"
         }
     ];
@@ -42,6 +52,7 @@ if (!('lightdm' in window)) {
     lightdm.default_session = lightdm.sessions[0];
     lightdm.authentication_user = null;
     lightdm.is_authenticated = false;
+    lightdm.in_authentication = false;
     lightdm.can_suspend = true;
     lightdm.can_hibernate = true;
     lightdm.can_restart = true;
@@ -100,10 +111,10 @@ if (!('lightdm' in window)) {
         }
         _lightdm_mock_check_argument_length(arguments, 1);
 
-        var user = _lightdm_mock_get_user(lightdm.username);
+        var user = _lightdm_mock_get_user(lightdm._username);
 
         // That's right, passwords are the same as the username's!
-        if (!user && secret == lightdm._username) {
+        if (user && secret == lightdm._username) {
             lightdm.is_authenticated = true;
             lightdm.authentication_user = user;
         } else {
@@ -112,6 +123,7 @@ if (!('lightdm' in window)) {
             lightdm._username = null;
         }
 
+        lightdm.in_authentication = false;
         authentication_complete();
     };
 
@@ -121,6 +133,7 @@ if (!('lightdm' in window)) {
         if (lightdm._username) {
             throw "Already authenticating!";
         }
+        lightdm.in_authentication = true;
         var user = _lightdm_mock_get_user(username);
         if (!user) {
             show_error(username + " is an invalid user");
@@ -136,6 +149,7 @@ if (!('lightdm' in window)) {
             throw "we are not authenticating";
         }
         lightdm._username = null;
+        lightdm.in_authentication = false;
     };
 
     lightdm.suspend = function () {
