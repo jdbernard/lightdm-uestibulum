@@ -1,4 +1,8 @@
-### Prerequisites
+## Demo
+
+[Live Demo](https://jdbernard.github.io/lightdm-uestibulum)
+
+## Prerequisites
 
 * [lightdm-webkit2-greeter](https://github.com/Antergos/lightdm-webkit2-greeter)
 
