@@ -1,4 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Abel|Aldrich|Audiowide|Black+Ops+One|Cherry+Cream+Soda|Exo|Exo 2|Graduate|Josefin+Sans|Kelly+Slab|Michroma|Monoton|Nixie+One|Open+Sans+Condensed:300|Orbitron|Poiret+One|Press+Start+2P|Prompt|Rajdhani|Raleway|Russo+One|Signika|Syncopate|Teko');
+//@import url('https://fonts.googleapis.com/css?family=Abel|Aldrich|Audiowide|Black+Ops+One|Cherry+Cream+Soda|Exo|Exo 2|Graduate|Josefin+Sans|Kelly+Slab|Michroma|Monoton|Nixie+One|Open+Sans+Condensed:300|Orbitron|Poiret+One|Press+Start+2P|Prompt|Rajdhani|Raleway|Russo+One|Signika|Syncopate|Teko');
+
+@font-face {
+  font-family: Exo2;
+  src: local("Exo 2"), url(../fonts/Exo2-Medium.ttf);
+}
 
 * { margin: 0; padding: 0; }
 
@@ -11,7 +16,7 @@ $colorAccent: orange;
 
 body {
   color: $colorFG;
-  font-family: 'Exo 2'
+  font-family: Exo2
 }
 
 .bg {

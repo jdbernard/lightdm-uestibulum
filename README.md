@@ -33,3 +33,16 @@ Disable the GTK greeter:
 
 *On distributions other than Ubuntu, lightdm configuration files may be in
 different locations. Consult your distribution's documentation for details.*
+
+## Lisence
+
+Lisenced under the [MIT License](https://opensource.org/licenses/MIT)
+(see [LICENSEE.md](LICENSE.md)).
+
+### Attributions
+
+Images taken from [unsplash.com](unsplash.com). Used under the [unsplash
+lisence](https://unsplash.com/license).
+
+[Exo 2](https://fonts.google.com/specimen/Exo+2) font lisenced under the
+[Open Font Lisence](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web).
