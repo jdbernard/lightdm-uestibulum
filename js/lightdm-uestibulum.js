@@ -91,6 +91,8 @@
     },
 
     showUserSelect: function() {
+      if (lightdm.lock_hint || lightdm.users.length === 1) return;
+
       this.$el.removeClass('failed-auth');
       this.$el.find('#users').addClass('select-user');
       lightdm.cancel_authentication();
@@ -121,6 +123,7 @@
       this.$el.removeClass('failed-auth');
       //if (e.key != 'Enter') return;
       if (e.keyCode != 13) return;
+      if (!lightdm.in_authentication) lightdm.authenticate(this.user.name);
       lightdm.respond($(e.target).val());
     }
 
@@ -170,6 +173,9 @@
       _.bindAll(this, 'render', 'authComplete', 'checkTimePeriod');
 
       window.authentication_complete = this.authComplete;
+      window.autologin_timer_expired = function() {};
+
+      if (lightdm.lock_hint) this.$el.addClass('lock-screen');
 
       this.timePeriod = 'day';
       this.loginView = new U.LoginView({uiView: this});
@@ -181,7 +187,7 @@
 
     authComplete: function() {
       if (lightdm.is_authenticated) {
-        //lightdm.start_session_sync(this.sessionView.session.key);
+        //lightdm.start_session(this.sessionView.session.key);
         lightdm.login(this.loginView.user, this.sessionView.session.key);
       }
       else {

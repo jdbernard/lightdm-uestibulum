@@ -99,7 +99,7 @@ body {
     color: $colorFG;
     font-size: 1vw;
     margin-top: 0.5em;
-    //opacity: 0;
+    opacity: 0;
     transition: 0.5s;
     width: 20em;
 
@@ -146,7 +146,9 @@ body {
   &:hover { opacity: 1 };
 
   #sessions-list li { display: inline-block; }
+
 }
+
 
 #sessions { 
   cursor: pointer;
@@ -170,6 +172,10 @@ body {
     border-color: red !important;
   }
   #fail-msg { opacity: 1 !important; }
+}
+
+.lock-screen {
+  #session-panel { display: none !important; }
 }
 
 @keyframes throb {
