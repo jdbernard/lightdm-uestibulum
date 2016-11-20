@@ -7,7 +7,7 @@
 Download and install the `uestibulum` theme:
 
     git clone https://github.com/jdbernard/lightdm-uestibulum.git
-    sudo mv lightdm-uestibulum /usr/share/lightdm
+    sudo cp -r lightdm-uestibulum /usr/share/lightdm/uestibulum
 
 Change the `webkit-theme` value in `/etc/lightdm/lightdm-webkit2-greeter.conf`:
 
@@ -25,3 +25,7 @@ Disable the GTK greeter:
 
     sudo mkdir /usr/share/lightdm/lightdm.conf.d.disabled
     sudo mv /usr/share/lightdm/lightdm.conf.d/60-lightdm-gtk-greeter.conf /usr/share/lightdm/lightdm.conf.d.disabled
+
+
+*On distributions other than Ubuntu, lightdm configuration files may be in
+different locations. Consult your distribution's documentation for details.*
