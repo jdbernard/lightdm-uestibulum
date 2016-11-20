@@ -1,6 +1,7 @@
 ## Demo
 
-[Live Demo](https://jdbernard.github.io/lightdm-uestibulum)
+[Live Demo](https://jdbernard.github.io/lightdm-uestibulum) (view in
+fullscreen).
 
 ## Prerequisites
 
