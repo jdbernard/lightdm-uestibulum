@@ -57,15 +57,33 @@
     },
 
     initialize: function(options) {
-      _.bindAll(this, 'enterPassword', 'getUserName',
+      _.bindAll(this, 'authComplete', 'enterPassword', 'getUserName',
                 'render', 'showPrompt', 'showUserSelect');
 
       this.uiView = options.uiView;
+      this.sessionView = options.sessionView;
       window.show_prompt = this.showPrompt;
+      window.authentication_complete = this.authComplete;
       this.user = lightdm.users[0];
 
       lightdm.authenticate(this.user.name);
       //lightdm.start_authentication(this.user.name);
+    },
+
+    authComplete: function() {
+      console.log('authComplete. is_authenticated: ' + lightdm.is_authenticated);
+      if (lightdm.is_authenticated) {
+        console.log('Logging in: lightdm.login(' + this.user.name, this.sessionView.key);
+        //lightdm.start_session(this.sessionView.session.key);
+        this.$el.removeClass('checking');
+        lightdm.login(this.user, this.sessionView.session.key);
+      }
+      else {
+        this.$el.addClass('failed-auth');
+        this.$el.removeClass('checking');
+        lightdm.authenticate(this.loginView.user.name);
+        //lightdm.start_authentication(this.loginView.user.name);
+      }
     },
 
     getUserName: function(user) {
@@ -123,6 +141,7 @@
       this.$el.removeClass('failed-auth');
       //if (e.key != 'Enter') return;
       if (e.keyCode != 13) return;
+      this.$el.addClass('checking');
       if (!lightdm.in_authentication) lightdm.authenticate(this.user.name);
       lightdm.respond($(e.target).val());
     }
@@ -170,31 +189,18 @@
     events: {},
 
     initialize: function(options) {
-      _.bindAll(this, 'render', 'authComplete', 'checkTimePeriod');
+      _.bindAll(this, 'render', 'checkTimePeriod');
 
-      window.authentication_complete = this.authComplete;
       window.autologin_timer_expired = function() {};
 
       if (lightdm.lock_hint) this.$el.addClass('lock-screen');
 
       this.timePeriod = 'day';
-      this.loginView = new U.LoginView({uiView: this});
       this.sessionView = new U.SessionView();
+      this.loginView = new U.LoginView({uiView: this, sessionView: this.sessionView});
       this.clockView = new U.ClockView();
       this.powerView = new U.PowerView();
       this.render();
-    },
-
-    authComplete: function() {
-      if (lightdm.is_authenticated) {
-        //lightdm.start_session(this.sessionView.session.key);
-        lightdm.login(this.loginView.user, this.sessionView.session.key);
-      }
-      else {
-        this.$el.find('#login-panel').addClass('failed-auth');
-        lightdm.authenticate(this.loginView.user.name);
-        //lightdm.start_authentication(this.loginView.user.name);
-      }
     },
 
     render: function() {
