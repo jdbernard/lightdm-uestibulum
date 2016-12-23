@@ -25,6 +25,7 @@
 
     init: function(uiView) {
       uiView.$el.addClass('theme-' + uiView.theme.name);
+      curTimePeriod = null; // force the next render to figure out the time period
     },
 
     render: function(uiView, manualTimePeriod) {
@@ -45,7 +46,7 @@
       uiView.$el.removeClass(curTimePeriod);
     },
 
-    getGreeting: function() { return 'Good ' + curTimePeriod; }
+    getGreeting: function() { return 'Good ' + curTimePeriod + ', '; }
 
   };
   U.themes['jdb'] = T;

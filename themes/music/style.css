@@ -1,3 +1,35 @@
-
+.theme-music.o3 {
+  text-shadow: 0 0 1vw black; }
+  .theme-music.o3 #clock-panel {
+    position: absolute;
+    bottom: 21.5vw;
+    font-size: 5vw;
+    left: 9vw;
+    transform: rotateY(48deg) rotateX(-33deg) rotateZ(-22deg) translateX(-10vw); }
+  .theme-music.o3 #login-panel #greeting {
+    position: absolute;
+    left: 35vw;
+    bottom: 30.3vw;
+    font-size: 3vw;
+    transform-origin: left;
+    transform: rotateY(48deg) rotateX(-33deg) rotateZ(-22deg) translateX(-25vw); }
+  .theme-music.o3 #login-panel #users-list li.user {
+    display: inline-block; }
+  .theme-music.o3 #login-panel #users {
+    transform: rotateY(46deg) rotateX(-33deg) rotateZ(-32deg) translateX(6vw) skewX(-13deg);
+    position: absolute;
+    bottom: 6vw;
+    left: 6vw;
+    font-size: 4vw; }
+  .theme-music.o3 #login-panel input[type=password] {
+    transform: rotateY(48deg) rotateX(-33deg) rotateZ(-31.5deg) translateX(32vw) skewX(-13deg);
+    position: absolute;
+    bottom: 2.2vw;
+    left: 6vw;
+    font-size: 3vw !important;
+    transform-origin: left;
+    /* color: lightgrey; */
+    background: rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 0 1vw black; }
 
 /*# sourceMappingURL=style.css.map */

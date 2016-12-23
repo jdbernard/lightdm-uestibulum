@@ -10,6 +10,13 @@
       left: 2vw;
     }
   }*/ }
+  .theme-jdb #clock-panel {
+    background: rgba(0, 0, 0, 0.3);
+    font-size: 6vw;
+    font-weight: 500;
+    padding: 1vw 2vw;
+    width: 100%;
+    z-index: 1; }
   .theme-jdb.evening #clock-panel {
     border-bottom: 2px solid white;
     text-align: right;

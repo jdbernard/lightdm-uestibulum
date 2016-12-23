@@ -75,15 +75,6 @@ body {
   }
 }
 
-#clock-panel {
-  background: rgba(0, 0, 0, 0.3);
-  font-size: 6vw;
-  font-weight: 500;
-  padding: 1vw 2vw;
-  width: 100%;
-  z-index: 1;
-}
-
 #login-panel {
 
   z-index: 2;
@@ -162,6 +153,20 @@ body {
   }
 }
 
+@keyframes throb {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+#checking-credentials {
+  opacity: 0;
+  .c1, .c2, .c3 { animation: alternate infinite 2s throb; }
+  .c2 { animation-delay: 200ms; }
+  .c3 { animation-delay: 400ms; }
+}
+
+#login-panel.checking #checking-credentials { opacity: 1; }
+
 .failed-auth {
   input[type=password] {
     color: red;
@@ -172,11 +177,6 @@ body {
 
 .lock-screen {
   #session-panel { display: none !important; }
-}
-
-@keyframes throb {
-  from { opacity: 1; }
-  to { opacity: 0; }
 }
 
 .throb { animation: alternate infinite 2s throb; }

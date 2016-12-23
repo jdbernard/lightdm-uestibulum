@@ -1,7 +1,7 @@
 (function() {
 
   var U = window.uestibulum = {
-    config: { theme: 'jdb', hidpi: true },
+    config: { fullNames: false, hidpi: true, theme: 'music' },
     themes: {}
   };
 
@@ -116,23 +116,26 @@
 
     authComplete: function() {
       console.log('authComplete. is_authenticated: ' + lightdm.is_authenticated);
+      this.$el.removeClass('checking');
+      this.$el.find('input[type=password]').prop('disabled', false);
+
       if (lightdm.is_authenticated) {
         console.log('Logging in: lightdm.login(' + this.user.name + ',' +
                     this.sessionView.key + ')');
         //lightdm.start_session(this.sessionView.session.key);
-        this.$el.removeClass('checking');
         lightdm.login(this.user, this.sessionView.session.key);
       }
       else {
         this.$el.addClass('failed-auth');
-        this.$el.removeClass('checking');
-        lightdm.authenticate(this.loginView.user.name);
+        lightdm.authenticate(this.user.name);
         //lightdm.start_authentication(this.loginView.user.name);
       }
     },
 
     getUserName: function(user) {
-      return user.display_name || user.real_name || user.name;
+      var name = user.display_name || user.real_name || user.name;
+      if (!U.config.fullNames) name = name.split(/\s/)[0];
+      return name;
     },
 
     render: function() {
@@ -187,6 +190,7 @@
       //if (e.key != 'Enter') return;
       if (e.keyCode != 13) return;
       this.$el.addClass('checking');
+      this.$el.find('input[type=password]').prop('disabled', true);
       if (!lightdm.in_authentication) lightdm.authenticate(this.user.name);
       lightdm.respond($(e.target).val());
     }
@@ -253,7 +257,7 @@
 
     render: function() { this.theme.render(this); },
 
-    getGreeting: function() { this.theme.getGreeting(); },
+    getGreeting: function() { return this.theme.getGreeting(); },
 
     setTheme: function(themeName) {
       var promise;
