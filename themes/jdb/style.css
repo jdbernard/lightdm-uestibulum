@@ -1,0 +1,69 @@
+.theme-jdb {
+  /*&.night {
+    #clock-panel {
+
+    }
+
+    #login-panel {
+      position: absolute;
+      bottom: 2vw;
+      left: 2vw;
+    }
+  }*/ }
+  .theme-jdb.evening #clock-panel {
+    border-bottom: 2px solid white;
+    text-align: right;
+    position: absolute;
+    right: 0;
+    top: 0; }
+  .theme-jdb.evening #login-panel {
+    position: absolute;
+    bottom: 2vw;
+    left: 1vw; }
+  .theme-jdb.evening #session-panel {
+    position: absolute;
+    bottom: 0.5vw;
+    left: 1vw; }
+  .theme-jdb.morning #clock-panel, .theme-jdb.night #clock-panel, .theme-jdb.afternoon #clock-panel {
+    border-top: 2px solid white;
+    position: absolute;
+    left: 0;
+    bottom: 0; }
+  .theme-jdb.morning #login-panel, .theme-jdb.night #login-panel, .theme-jdb.afternoon #login-panel {
+    position: absolute;
+    bottom: 2vw;
+    left: 20vw; }
+  .theme-jdb.morning #session-panel, .theme-jdb.night #session-panel, .theme-jdb.afternoon #session-panel {
+    position: absolute;
+    bottom: 0.5vw;
+    left: 20vw; }
+  .theme-jdb.morning #clock-panel {
+    text-shadow: 0 0 0.2vw #446688; }
+  .theme-jdb.morning #users:hover #user-display, .theme-jdb.morning #sessions:hover #session-display,
+  .theme-jdb.morning #users-list li:hover, .theme-jdb.morning #sessions-list li.session:hover {
+    color: #0088aa;
+    text-shadow: 0 0 0.5vw black; }
+  .theme-jdb.morning #power-panel {
+    opacity: 0.7; }
+  .theme-jdb.afternoon #clock-panel {
+    text-shadow: 0 0 2vw #448844; }
+  .theme-jdb.afternoon #users:hover #user-display, .theme-jdb.afternoon #sessions:hover #session-display,
+  .theme-jdb.afternoon #users-list li:hover, .theme-jdb.afternoon #sessions-list li.session:hover {
+    color: #00aa00;
+    text-shadow: 0 0 0.5vw black; }
+  .theme-jdb.evening #clock-panel {
+    text-shadow: 0 0 2vw #faaa3b; }
+  .theme-jdb.evening #users:hover #user-display, .theme-jdb.evening #sessions:hover #session-display,
+  .theme-jdb.evening #users-list li:hover, .theme-jdb.evening #sessions-list li.session:hover {
+    color: orange;
+    text-shadow: 0 0 0.5vw black; }
+  .theme-jdb.evening #power-panel {
+    opacity: 0.7; }
+  .theme-jdb.night #clock-panel {
+    text-shadow: 0 0 2vw #884488; }
+  .theme-jdb.night #users:hover #user-display, .theme-jdb.night #sessions:hover #session-display,
+  .theme-jdb.night #users-list li:hover, .theme-jdb.night #sessions-list li.session:hover {
+    color: #8822bb;
+    text-shadow: 0 0 0.2vw black; }
+
+/*# sourceMappingURL=style.css.map */

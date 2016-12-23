@@ -10,18 +10,14 @@
 h1 { font-size: 1.5vw; }
 h2 { font-size: 1vw; }
 
-$colorFG: white;
-$colorBG: black;
-$colorAccent: orange;
-
 body {
-  color: $colorFG;
+  color: white;
   font-family: Exo2
 }
 
-.bg {
+#background-image {
+  opacity: 1;
   display: block;
-  opacity: 0;
   transition: 1s;
 
   position: fixed;
@@ -30,11 +26,6 @@ body {
   right: 0;
   z-index: -1;
 }
-
-.morning #bg-morning { opacity: 1; }
-.afternoon #bg-afternoon { opacity: 1; }
-.evening #bg-evening { opacity: 1; }
-.night #bg-night { opacity: 1; }
 
 #ui-container {
   position: fixed;
@@ -100,8 +91,8 @@ body {
   input[type=password] {
     background: none;
     border: none;
-    border-bottom: 2px solid $colorFG;
-    color: $colorFG;
+    border-bottom: 2px solid white;
+    color: white;
     font-size: 1vw;
     margin-top: 0.5em;
     opacity: 0;
@@ -189,99 +180,3 @@ body {
 }
 
 .throb { animation: alternate infinite 2s throb; }
-
-
-.evening {
-  #clock-panel {
-    border-bottom: 2px solid $colorFG;
-    text-align: right;
-
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-
-  #login-panel {
-    position: absolute;
-    bottom: 2vw;
-    left: 1vw;
-  }
-
-  #session-panel {
-    position: absolute;
-    bottom: 0.5vw;
-    left: 1vw;
-  }
-}
-
-.morning, .night, .afternoon {
-  #clock-panel {
-    border-top: 2px solid $colorFG;
-
-    position: absolute;
-    left: 0;
-    bottom: 0;
-  }
-
-  #login-panel {
-    position: absolute;
-    bottom: 2vw;
-    left: 20vw;
-  }
-
-  #session-panel {
-    position: absolute;
-    bottom: 0.5vw;
-    left: 20vw;
-  }
-}
-
-.morning {
-  #clock-panel { text-shadow: 0 0 0.2vw #446688; }
-  #users:hover #user-display, #sessions:hover #session-display,
-  #users-list li:hover, #sessions-list li.session:hover {
-    color: #0088aa;
-    text-shadow: 0 0 0.5vw black;
-  }
-  #power-panel { opacity: 0.7; }
-}
-
-.afternoon {
-  #clock-panel { text-shadow: 0 0 2vw #448844; }
-  #users:hover #user-display, #sessions:hover #session-display,
-  #users-list li:hover, #sessions-list li.session:hover {
-    color: #00aa00;
-    text-shadow: 0 0 0.5vw black;
-  }
-}
-
-.evening {
-  #clock-panel { text-shadow: 0 0 2vw #faaa3b; }
-  #users:hover #user-display, #sessions:hover #session-display,
-  #users-list li:hover, #sessions-list li.session:hover {
-    color: orange;
-    text-shadow: 0 0 0.5vw black;
-  }
-  #power-panel { opacity: 0.7; }
-}
-
-.night {
-  #clock-panel { text-shadow: 0 0 2vw #884488; }
-  #users:hover #user-display, #sessions:hover #session-display,
-  #users-list li:hover, #sessions-list li.session:hover {
-    color: #8822bb;
-    text-shadow: 0 0 0.2vw black;
-  }
-}
-
-/*.night {
-  #clock-panel {
-
-  }
-
-  #login-panel {
-    position: absolute;
-    bottom: 2vw;
-    left: 2vw;
-  }
-}*/

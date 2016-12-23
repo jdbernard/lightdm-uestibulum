@@ -1,0 +1,102 @@
+$colorFG: white;
+$colorBG: black;
+$colorAccent: orange;
+
+
+.theme-jdb {
+
+  &.evening {
+    #clock-panel {
+      border-bottom: 2px solid $colorFG;
+      text-align: right;
+
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    #login-panel {
+      position: absolute;
+      bottom: 2vw;
+      left: 1vw;
+    }
+
+    #session-panel {
+      position: absolute;
+      bottom: 0.5vw;
+      left: 1vw;
+    }
+  }
+
+  &.morning, &.night, &.afternoon {
+    #clock-panel {
+      border-top: 2px solid $colorFG;
+
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+
+    #login-panel {
+      position: absolute;
+      bottom: 2vw;
+      left: 20vw;
+    }
+
+    #session-panel {
+      position: absolute;
+      bottom: 0.5vw;
+      left: 20vw;
+    }
+  }
+
+  &.morning {
+    #clock-panel { text-shadow: 0 0 0.2vw #446688; }
+    #users:hover #user-display, #sessions:hover #session-display,
+    #users-list li:hover, #sessions-list li.session:hover {
+      color: #0088aa;
+      text-shadow: 0 0 0.5vw black;
+    }
+    #power-panel { opacity: 0.7; }
+  }
+
+  &.afternoon {
+    #clock-panel { text-shadow: 0 0 2vw #448844; }
+    #users:hover #user-display, #sessions:hover #session-display,
+    #users-list li:hover, #sessions-list li.session:hover {
+      color: #00aa00;
+      text-shadow: 0 0 0.5vw black;
+    }
+  }
+
+  &.evening {
+    #clock-panel { text-shadow: 0 0 2vw #faaa3b; }
+    #users:hover #user-display, #sessions:hover #session-display,
+    #users-list li:hover, #sessions-list li.session:hover {
+      color: orange;
+      text-shadow: 0 0 0.5vw black;
+    }
+    #power-panel { opacity: 0.7; }
+  }
+
+  &.night {
+    #clock-panel { text-shadow: 0 0 2vw #884488; }
+    #users:hover #user-display, #sessions:hover #session-display,
+    #users-list li:hover, #sessions-list li.session:hover {
+      color: #8822bb;
+      text-shadow: 0 0 0.2vw black;
+    }
+  }
+
+  /*&.night {
+    #clock-panel {
+
+    }
+
+    #login-panel {
+      position: absolute;
+      bottom: 2vw;
+      left: 2vw;
+    }
+  }*/
+}

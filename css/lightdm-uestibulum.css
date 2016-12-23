@@ -15,27 +15,15 @@ body {
   color: white;
   font-family: Exo2; }
 
-.bg {
+#background-image {
+  opacity: 1;
   display: block;
-  opacity: 0;
   transition: 1s;
   position: fixed;
   width: 100%;
   bottom: 0;
   right: 0;
   z-index: -1; }
-
-.morning #bg-morning {
-  opacity: 1; }
-
-.afternoon #bg-afternoon {
-  opacity: 1; }
-
-.evening #bg-evening {
-  opacity: 1; }
-
-.night #bg-night {
-  opacity: 1; }
 
 #ui-container {
   position: fixed;
@@ -157,78 +145,5 @@ body {
     opacity: 0; } }
 .throb {
   animation: alternate infinite 2s throb; }
-
-.evening #clock-panel {
-  border-bottom: 2px solid white;
-  text-align: right;
-  position: absolute;
-  right: 0;
-  top: 0; }
-.evening #login-panel {
-  position: absolute;
-  bottom: 2vw;
-  left: 1vw; }
-.evening #session-panel {
-  position: absolute;
-  bottom: 0.5vw;
-  left: 1vw; }
-
-.morning #clock-panel, .night #clock-panel, .afternoon #clock-panel {
-  border-top: 2px solid white;
-  position: absolute;
-  left: 0;
-  bottom: 0; }
-.morning #login-panel, .night #login-panel, .afternoon #login-panel {
-  position: absolute;
-  bottom: 2vw;
-  left: 20vw; }
-.morning #session-panel, .night #session-panel, .afternoon #session-panel {
-  position: absolute;
-  bottom: 0.5vw;
-  left: 20vw; }
-
-.morning #clock-panel {
-  text-shadow: 0 0 0.2vw #446688; }
-.morning #users:hover #user-display, .morning #sessions:hover #session-display,
-.morning #users-list li:hover, .morning #sessions-list li.session:hover {
-  color: #0088aa;
-  text-shadow: 0 0 0.5vw black; }
-.morning #power-panel {
-  opacity: 0.7; }
-
-.afternoon #clock-panel {
-  text-shadow: 0 0 2vw #448844; }
-.afternoon #users:hover #user-display, .afternoon #sessions:hover #session-display,
-.afternoon #users-list li:hover, .afternoon #sessions-list li.session:hover {
-  color: #00aa00;
-  text-shadow: 0 0 0.5vw black; }
-
-.evening #clock-panel {
-  text-shadow: 0 0 2vw #faaa3b; }
-.evening #users:hover #user-display, .evening #sessions:hover #session-display,
-.evening #users-list li:hover, .evening #sessions-list li.session:hover {
-  color: orange;
-  text-shadow: 0 0 0.5vw black; }
-.evening #power-panel {
-  opacity: 0.7; }
-
-.night #clock-panel {
-  text-shadow: 0 0 2vw #884488; }
-.night #users:hover #user-display, .night #sessions:hover #session-display,
-.night #users-list li:hover, .night #sessions-list li.session:hover {
-  color: #8822bb;
-  text-shadow: 0 0 0.2vw black; }
-
-/*.night {
-  #clock-panel {
-
-  }
-
-  #login-panel {
-    position: absolute;
-    bottom: 2vw;
-    left: 2vw;
-  }
-}*/
 
 /*# sourceMappingURL=lightdm-uestibulum.css.map */

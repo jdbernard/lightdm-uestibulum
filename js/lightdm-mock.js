@@ -96,6 +96,7 @@ if (!('lightdm' in window)) {
     lightdm.timed_login_user =
         lightdm.timed_login_delay > 0 ? lightdm.users[0] : null;
 
+    lightdm.get_str = function () {};
     lightdm.get_string_property = function () {};
     lightdm.get_integer_property = function () {};
     lightdm.get_boolean_property = function () {};

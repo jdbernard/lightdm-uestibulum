@@ -1,9 +1,53 @@
 (function() {
 
-  var U = window.uestibulum = {};
+  var U = window.uestibulum = {
+    config { theme: 'jdb', hidpi: true },
+    themes: {}
+  };
+
   _.templateSettings = {
     interpolate: /\{\{(.+?)\}\}/g
   };
+
+  U.load = function(tag, url) {
+    return new Promise(function(resolve, reject) {
+      var element = document.createElement(tag);
+      var parent = 'body';
+      var attr = 'src';
+
+      element.onload = resolve;
+      element.onerror = reject;
+
+      switch (tag) {
+        case 'script': element.async = true; break;
+        case 'link':
+          element.type = 'text/css';
+          element.rel = 'stylesheet';
+          attr = 'href';
+          parent = 'head';
+          break;
+        default:
+      }
+
+      element[attr] = url;
+      document[parent].appendChild(element);
+    });
+  };
+
+  U.ImageModel = Backbone.Model.extend({
+    defaults: { url: 'img/black.png' } });
+
+  U.BackgroundView = Backbone.View.extend({
+    el: '#background-image',
+
+    initialize: function(options) {
+      _.bindAll(this, 'render');
+      this.imgModel = options.imageModel;
+      this.imgModel.on('change:url', this.render);
+    },
+
+    render: function() { this.$el.attr('src', this.imgModel.get('url')); }
+  });
 
   U.ClockView = Backbone.View.extend({
     el: '#clock-panel',
@@ -73,7 +117,8 @@
     authComplete: function() {
       console.log('authComplete. is_authenticated: ' + lightdm.is_authenticated);
       if (lightdm.is_authenticated) {
-        console.log('Logging in: lightdm.login(' + this.user.name, this.sessionView.key);
+        console.log('Logging in: lightdm.login(' + this.user.name + ',' +
+                    this.sessionView.key + ')');
         //lightdm.start_session(this.sessionView.session.key);
         this.$el.removeClass('checking');
         lightdm.login(this.user, this.sessionView.session.key);
@@ -92,7 +137,6 @@
 
     render: function() {
       this.undelegateEvents();
-      var greeting = 'Good ' + this.uiView.timePeriod;
 
       var $userListEl = this.$el.find('#users-list');
       $userListEl.html(
@@ -102,9 +146,10 @@
         }, this).join('\n'));
 
       if (this.user) {
-        this.$el.find('#greeting').text(greeting);
+        this.$el.find('#greeting').text(this.uiView.getGreeting());
         this.$el.find('#user-display').text(this.getUserName(this.user));
       } 
+
       this.delegateEvents();
     },
 
@@ -159,6 +204,7 @@
       _.bindAll(this, 'render', 'showSessionSelect', 'selectSession');
 
       this.session = lightdm.sessions[0];
+      this.render();
     },
 
     render: function() {
@@ -189,46 +235,52 @@
     events: {},
 
     initialize: function(options) {
-      _.bindAll(this, 'render', 'checkTimePeriod');
+      _.bindAll(this, 'render', 'setTheme');
 
       window.autologin_timer_expired = function() {};
 
       if (lightdm.lock_hint) this.$el.addClass('lock-screen');
 
-      this.timePeriod = 'day';
+      this.bgImgModel = new U.ImageModel
+      this.backgroundView = new U.BackgroundView({imageModel: this.bgImgModel});
       this.sessionView = new U.SessionView();
       this.loginView = new U.LoginView({uiView: this, sessionView: this.sessionView});
       this.clockView = new U.ClockView();
       this.powerView = new U.PowerView();
-      this.render();
+      this.setTheme(U.config.theme || 'jdb')
+        .then(this.render);
     },
 
-    render: function() {
-      var prevTimePeriod = this.timePeriod;
-      this.checkTimePeriod();
+    render: function() { this.theme.render(this); },
 
-      if (this.timePeriod != prevTimePeriod) {
-        this.$el.removeClass(prevTimePeriod);
-        this.$el.addClass(this.timePeriod);
-        this.loginView.render();
-        this.sessionView.render();
+    getGreeting: function() { this.theme.getGreeting(); },
+
+    setTheme: function(themeName) {
+      var promise;
+      var uiView = this;
+
+      if (U.themes[themeName]) promise = Promise.resolve(U.themes[themeName]);
+      else {
+        promise = Promise.all([
+          U.load('script', 'themes/' + themeName + '/index.js'),
+          U.load('link', 'themes/' + themeName + '/style.css') ]);
       }
-    },
 
-    checkTimePeriod: function() {
-      var now = new Date();
-      if (now.getHours() >= 21 || now.getHours() < 4) this.timePeriod = 'night';
-      else if (now.getHours() < 12) this.timePeriod = 'morning';
-      else if (now.getHours() < 18) this.timePeriod = 'afternoon';
-      else this.timePeriod = 'evening';
+      return promise.then(function() {
+        if (uiView.theme) uiView.theme.unload(uiView);
+
+        uiView.theme = U.themes[themeName];
+        uiView.theme.init(uiView);
+        return uiView.theme;
+      });
     }
+
   });
 
   $(document).ready(function() { 
     U.uiView = new U.UIView();
+    console.log('window: ' + Object.getOwnPropertyNames(window).join(', '));
   });
-
-
 
 })();
 
