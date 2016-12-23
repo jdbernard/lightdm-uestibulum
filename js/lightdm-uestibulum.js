@@ -1,7 +1,7 @@
 (function() {
 
   var U = window.uestibulum = {
-    config { theme: 'jdb', hidpi: true },
+    config: { theme: 'jdb', hidpi: true },
     themes: {}
   };
 
@@ -277,10 +277,7 @@
 
   });
 
-  $(document).ready(function() { 
-    U.uiView = new U.UIView();
-    console.log('window: ' + Object.getOwnPropertyNames(window).join(', '));
-  });
+  $(document).ready(function() { U.uiView = new U.UIView(); });
 
 })();
 
