@@ -1,7 +1,7 @@
 (function() {
 
   var U = window.uestibulum = {
-    config: { fullNames: false, hidpi: true, theme: 'music' },
+    config: { fullNames: false, hidpi: true, theme: 'jdb' },
     themes: {}
   };
 
