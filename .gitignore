@@ -1,2 +1,3 @@
 .sass-cache/
 *.sw?
+node_modules/
