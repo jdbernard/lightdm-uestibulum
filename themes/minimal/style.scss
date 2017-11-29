@@ -1,0 +1,48 @@
+@keyframes lightthrob {
+  from { opacity: 1; }
+  to { opacity: 0.67; }
+}
+
+@font-face {
+  font-family: Coda;
+  src: local("Coda"), url("fonts/Coda-Regular.ttf");
+}
+
+#login-panel { 
+  font-family: 'Coda', mono;
+  position: absolute;
+  left: 0;
+  top: calc(50% - 1rem);
+  width: 100%;
+  animation: alternate ease-in infinite 2s lightthrob;
+
+  * { box-sizing: border-box; }
+  #greeting { display: none; }
+
+  & > h1 {
+    position: absolute;
+    text-align: right;
+    width: calc(50% - 1rem);
+  }
+
+  #user-display { text-transform: lowercase; }
+  .fa-user-circle { display: none; }
+
+  input[name="pwd"] {
+    width: calc(50% - 1rem);
+    position: absolute;
+    right: 0;
+    border: none;
+
+    &::placeholder { opacity: 0; }
+  }
+}
+
+#power-panel {
+  opacity: 0;
+  transition: opacity 1s;
+
+  &:hover { opacity: 1; }
+}
+
+#clock-panel { visibility: hidden; }

@@ -1,7 +1,7 @@
 (function() {
 
   var U = window.uestibulum = {
-    config: { fullNames: false, hidpi: true, theme: 'jdb' },
+    config: { fullNames: false, hidpi: true, theme: 'minimal' },
     themes: {}
   };
 
@@ -44,6 +44,7 @@
       _.bindAll(this, 'render');
       this.imgModel = options.imageModel;
       this.imgModel.on('change:url', this.render);
+      this.render(); // perform an initial render
     },
 
     render: function() { this.$el.attr('src', this.imgModel.get('url')); }
