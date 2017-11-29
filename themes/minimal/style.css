@@ -2,7 +2,7 @@
   from {
     opacity: 1; }
   to {
-    opacity: 0.67; } }
+    opacity: 0.5; } }
 @font-face {
   font-family: Coda;
   src: local("Coda"), url("fonts/Coda-Regular.ttf"); }
@@ -25,12 +25,12 @@
     text-transform: lowercase; }
   #login-panel .fa-user-circle {
     display: none; }
-  #login-panel input[name="pwd"] {
+  #login-panel input[type=password] {
     width: calc(50% - 1rem);
     position: absolute;
     right: 0;
     border: none; }
-    #login-panel input[name="pwd"]::placeholder {
+    #login-panel input[type=password]::placeholder {
       opacity: 0; }
 
 #power-panel {
@@ -41,5 +41,12 @@
 
 #clock-panel {
   visibility: hidden; }
+
+#ui-container.white {
+  background-color: white; }
+  #ui-container.white #login-panel {
+    color: black; }
+  #ui-container.white input[type=password] {
+    color: black; }
 
 /*# sourceMappingURL=style.css.map */

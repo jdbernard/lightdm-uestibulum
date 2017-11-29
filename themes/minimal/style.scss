@@ -1,6 +1,6 @@
 @keyframes lightthrob {
   from { opacity: 1; }
-  to { opacity: 0.67; }
+  to { opacity: 0.5; }
 }
 
 @font-face {
@@ -28,7 +28,7 @@
   #user-display { text-transform: lowercase; }
   .fa-user-circle { display: none; }
 
-  input[name="pwd"] {
+  input[type=password] {
     width: calc(50% - 1rem);
     position: absolute;
     right: 0;
@@ -46,3 +46,11 @@
 }
 
 #clock-panel { visibility: hidden; }
+
+#ui-container.white {
+
+  background-color: white;
+
+  #login-panel { color: black; }
+  input[type=password] { color: black; }
+}
